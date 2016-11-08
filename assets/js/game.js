@@ -2,6 +2,8 @@ $(document).ready(function(){
     var animals = ["cats", "dogs", "turtles"];
     
     function generateButtons() {
+        $("#buttons").empty();
+        
         for (var i = 0; i < animals.length; i++) {
             //Create a new button
             var newButton = $('<button>');
@@ -16,7 +18,7 @@ $(document).ready(function(){
             //Assign the click event
             newButton.on('click', showGifs);
 
-            console.log(animals[i]);
+//            console.log(animals[i]);
         };
     }
     
@@ -25,21 +27,40 @@ $(document).ready(function(){
     
     //Function to carry out the Ajax call and show the gifs
     function showGifs() {
-        var animalName = $(this).attr('data-name');
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animalName + "&api_key=dc6zaTOxFJmzC&limit=2";
-        $.ajax({url: queryURL, method: 'GET'}).done(function(response){
-            for (var i = 0; i < 9; i++) {
-                var rating = response.data.rating;
-                var imageUrl = response.data.images.fixed_height.url;
-                
-                console.log(rating);
-                console.log(imageUrl);
-            };
-            
-            console.log(response);
-        });
+        $("#displayGifsHere").empty();
         
-        console.log(animalName);
-        console.log(queryURL);
+        var animalName = $(this).attr('data-name');
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animalName + "&api_key=dc6zaTOxFJmzC&limit=10";
+        $.ajax({url: queryURL, method: 'GET'}).done(function(response){
+            var results = response.data;
+            
+            console.log(response.data);
+            
+            for (var i = 0; i < results.length; i++) {
+                var rating = results[i].rating;
+                
+                var displayRating = $('<p>').attr('class', 'rating').text('Rating: ' + rating);
+                
+                var imageUrl = results[i].images.fixed_height.url;
+                
+                var displayImageUrl = $('<img>').attr('src', imageUrl);
+                
+                
+                $("#displayGifsHere").append(displayRating).append(displayImageUrl);
+                
+//                console.log(rating);
+//                console.log(imageUrl);
+            };
+        });
     };
+    
+    $("#submitAnimal").on("click", function() {
+        var newCat = $("#searchBar").val().trim();
+        
+        animals.push(newCat);
+        
+        generateButtons();
+    
+        console.log(animals);
+    });
 });
