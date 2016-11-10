@@ -7,19 +7,28 @@ body {
 }
 
 #buttons {
-    border: 1px solid pink;
-    margin: 0 auto;
+
 }
 
-#displayGifs {
-    border: 1px solid blue;
+#displayGifsHere {
 }
 
 #search {
-    border: 1px solid green;
+    text-align: center; 
 }
 
 .animButton {
     margin: 5px;
+}
+
+.rating {
+    text-align: center; 
+    color: white;
+}
+
+.imageUrl {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 

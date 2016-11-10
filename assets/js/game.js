@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var animals = ["cats", "dogs", "turtles", "gorillas", "lions", "tigers", "snakes", "birds", "ram", "deer", "krab", "puppy", "meerkat", "dolphin", "jaguar", "monkey", "baboon", "warthog", "kitten"];
+    var animals = ["T-Rex", "Stegosaurus", "Raptor", "Triceratops", "Stegosaurus", "Pterodactyl", "Dilophosaurus", "Brachiosaurus", "Pteranodon", "Troodon", "Apatosaurus",];
     
 //    var ratings, displayRating, imageUrlStil, imageUrlMotion, displayImageUrl
     
@@ -10,7 +10,7 @@ $(document).ready(function(){
             //Create a new button
             var newButton = $('<button>');
             //Adds new class
-            newButton.addClass('btn btn-default animButton');
+            newButton.addClass('btn btn-default animButton centered');
             //Adds custom attribute
             newButton.attr('data-name', animals[i]);
             //Adds the item in the array as the text
