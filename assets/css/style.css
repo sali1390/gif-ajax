@@ -1,5 +1,14 @@
+body {
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 #buttons {
     border: 1px solid pink;
+    margin: 0 auto;
 }
 
 #displayGifs {
@@ -9,3 +18,8 @@
 #search {
     border: 1px solid green;
 }
+
+.animButton {
+    margin: 5px;
+}
+

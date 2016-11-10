@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    var animals = ["cats", "dogs", "turtles"];
+    var animals = ["cats", "dogs", "turtles", "gorillas", "lions", "tigers", "snakes", "birds", "ram", "deer", "krab", "puppy", "meerkat", "dolphin", "jaguar", "monkey", "baboon", "warthog", "kitten"];
+    
+//    var ratings, displayRating, imageUrlStil, imageUrlMotion, displayImageUrl
     
     function generateButtons() {
         $("#buttons").empty();
@@ -8,7 +10,7 @@ $(document).ready(function(){
             //Create a new button
             var newButton = $('<button>');
             //Adds new class
-            newButton.addClass('animButton');
+            newButton.addClass('btn btn-default animButton');
             //Adds custom attribute
             newButton.attr('data-name', animals[i]);
             //Adds the item in the array as the text
@@ -41,16 +43,21 @@ $(document).ready(function(){
                 
                 var displayRating = $('<p>').attr('class', 'rating').text('Rating: ' + rating);
                 
-                var imageUrl = results[i].images.fixed_height.url;
+                var imageUrlStill = results[i].images.fixed_height.url;
                 
-                var displayImageUrl = $('<img>').attr('src', imageUrl);
-                
+                var displayImageUrl = $('<img>').attr('class', 'imageUrl').attr('src', imageUrlStill);
                 
                 $("#displayGifsHere").append(displayRating).append(displayImageUrl);
                 
 //                console.log(rating);
-//                console.log(imageUrl);
             };
+            
+//            $(".imageUrl").on('click', function(){
+//                var imageUrlMotion = images.fixed_height.url;
+//
+//                $(".imageUrl").attr('src', imageUrlMotion);
+//            })
+        
         });
     };
     
@@ -62,5 +69,7 @@ $(document).ready(function(){
         generateButtons();
     
         console.log(animals);
+        
+        $("#searchBar").val("");
     });
 });
